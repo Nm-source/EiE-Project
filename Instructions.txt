@@ -1,0 +1,25 @@
+1. Open ANTware II
+
+2. Set the following parameters 
+	
+-Channel Assignment: Slave
+-Channel ID: 9950,1,1
+-Channel Period 8192 or 4HZ
+-Channel Frequency: 2450Mhz
+
+3. Click Auto-Open 
+
+4. Send data over messaging->broadcast
+-default password is 41-00-00-00-00-00-00-00
+			
+	       |---Password bytes---|~~|<-command byte
+ 		00-00-00-00-00-00-00-00
+
+5.To change the password first unlock the device by sending the correct Byte pattern.
+then send 0x01 in the command byte. Then send your new password.
+
+Note:
+0x00 gets converted to "/0" so anything to the right of a 00 will be ignored 
+(excluding the command byte) so if you change the password to 41-42-43-44-00-45-46
+45 and 46 will be ignored and your password will only be 41-42-43-44-00-00-00
+
